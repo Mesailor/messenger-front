@@ -1,0 +1,10 @@
+select {
+    width: 85%;
+    padding: 0 4% 0 4%;
+}
+
+.checkbox {
+    width: 10%;
+    text-align: left;
+    margin-left: 10%;
+}
