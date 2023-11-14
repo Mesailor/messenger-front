@@ -9,7 +9,7 @@ export default function Regpage() {
 
     async function sendUser() {
         const user = {
-            name,
+            name: name.toLowerCase(),
             password
         }
 
