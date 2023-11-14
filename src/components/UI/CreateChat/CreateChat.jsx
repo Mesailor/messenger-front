@@ -51,7 +51,7 @@ export default function CreateChat(props) {
         const reqBody = {chat: newChat}
 
         try {
-            const response = await fetch(`http://localhost:5000/chats`, {
+            const response = await fetch(`http://193.233.232.74:5000/chats`, {
                 method: "POST",
                 mode: "cors",
                 headers: {
