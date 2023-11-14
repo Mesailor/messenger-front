@@ -9,7 +9,7 @@ export default function ChatsList() {
 
     useEffect(() => {
         async function fecthAllChats() {
-            const chatsResp = await fetch('http://193.233.232.74:5000/chats', {
+            const chatsResp = await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats`, {
                 headers: { "X-Auth-Token": localStorage.getItem('token') }
             });
             const chats = await chatsResp.json();

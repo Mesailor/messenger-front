@@ -14,7 +14,7 @@ export default function Regpage() {
         }
 
         try {
-            let result = await fetch('http://193.233.232.74:5000/users', {
+            let result = await fetch(`http://${import.meta.env.VITE_BACKHOST}/users`, {
                 method: "POST",
                 mode: "cors",
                 headers: {

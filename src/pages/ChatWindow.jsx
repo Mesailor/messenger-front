@@ -18,7 +18,7 @@ export default function ChatWindow() {
             if (!id) {
                 return // КОСТЫЛЬ???
             }
-            const response = await fetch(`http://193.233.232.74:5000/chats/${id}`, {
+            const response = await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats/${id}`, {
                 headers: { "X-Auth-Token": localStorage.getItem('token') }
             })
             const chat = await response.json();
@@ -48,7 +48,7 @@ export default function ChatWindow() {
         if (!id) {
             return // КОСТЫЛЬ???
         }
-        const messResp = await fetch(`http://193.233.232.74:5000/chats/${id}/getmessage`, {
+        const messResp = await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats/${id}/getmessage`, {
             headers: { "X-Auth-Token": localStorage.getItem('token') }
         });
         const message = await messResp.json();
@@ -76,7 +76,7 @@ export default function ChatWindow() {
             if (!id) {
                 return // КОСТЫЛЬ???
             }
-            await fetch(`http://193.233.232.74:5000/chats/${id}/newmessage`, {
+            await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats/${id}/newmessage`, {
                 method: "POST",
                 mode: "cors",
                 headers: {

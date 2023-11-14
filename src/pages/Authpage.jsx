@@ -14,7 +14,7 @@ export default function Authpage() {
         }
 
         try {
-            let response = await fetch('http://193.233.232.74:5000/auth', {
+            let response = await fetch(`http://${import.meta.env.VITE_BACKHOST}/auth`, {
                 method: "POST",
                 mode: "cors",
                 headers: {

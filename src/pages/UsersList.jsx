@@ -7,7 +7,7 @@ export default function UsersList() {
 
     useEffect(() => {
         async function fecthAllUsers() {
-            const usersResp = await fetch('http://193.233.232.74:5000/users', {
+            const usersResp = await fetch(`http://${import.meta.env.VITE_BACKHOST}/users`, {
                 headers: { "X-Auth-Token": localStorage.getItem('token') }
             });
             const users = await usersResp.json();
