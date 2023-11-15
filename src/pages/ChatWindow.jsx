@@ -2,7 +2,7 @@ import Chat from "../components/Chat"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-export default function ChatWindow() {
+export default function ChatWindow(props) {
     const [value, setValue] = useState('')
     const [messages, setMessages] = useState([])
 
@@ -18,7 +18,7 @@ export default function ChatWindow() {
             if (!id) {
                 return // КОСТЫЛЬ???
             }
-            const response = await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats/${id}`, {
+            const response = await fetch(`http://${props.backend_host}/chats/${id}`, {
                 headers: { "X-Auth-Token": localStorage.getItem('token') }
             })
             const chat = await response.json();
@@ -48,7 +48,7 @@ export default function ChatWindow() {
         if (!id) {
             return // КОСТЫЛЬ???
         }
-        const messResp = await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats/${id}/getmessage`, {
+        const messResp = await fetch(`http://${props.backend_host}/chats/${id}/getmessage`, {
             headers: { "X-Auth-Token": localStorage.getItem('token') }
         });
         const message = await messResp.json();
@@ -76,7 +76,7 @@ export default function ChatWindow() {
             if (!id) {
                 return // КОСТЫЛЬ???
             }
-            await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats/${id}/newmessage`, {
+            await fetch(`http://${props.backend_host}/chats/${id}/newmessage`, {
                 method: "POST",
                 mode: "cors",
                 headers: {

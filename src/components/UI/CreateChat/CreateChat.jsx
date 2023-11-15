@@ -48,10 +48,10 @@ export default function CreateChat(props) {
             name: chatName,
             users: userIds
         }
-        const reqBody = {chat: newChat}
+        const reqBody = { chat: newChat }
 
         try {
-            const response = await fetch(`http://${import.meta.env.VITE_BACKHOST}/chats`, {
+            const response = await fetch(`http://${props.backend_host}/chats`, {
                 method: "POST",
                 mode: "cors",
                 headers: {

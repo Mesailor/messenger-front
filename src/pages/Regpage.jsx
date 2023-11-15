@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, redirect, useNavigate } from 'react-router-dom'
 
-export default function Regpage() {
+export default function Regpage(props) {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [result, setResult] = useState('')
@@ -14,7 +14,7 @@ export default function Regpage() {
         }
 
         try {
-            let result = await fetch(`http://${import.meta.env.VITE_BACKHOST}/users`, {
+            let result = await fetch(`http://${props.backend_host}/users`, {
                 method: "POST",
                 mode: "cors",
                 headers: {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 
-export default function Authpage() {
+export default function Authpage(props) {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [result, setResult] = useState('')
@@ -14,7 +14,7 @@ export default function Authpage() {
         }
 
         try {
-            let response = await fetch(`http://${import.meta.env.VITE_BACKHOST}/auth`, {
+            let response = await fetch(`http://${props.backend_host}/auth`, {
                 method: "POST",
                 mode: "cors",
                 headers: {
