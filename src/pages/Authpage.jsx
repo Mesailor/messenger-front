@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
+import '../styles/Authpage.css'
 
 export default function Authpage(props) {
     const [name, setName] = useState('')
@@ -35,22 +36,29 @@ export default function Authpage(props) {
     }
 
     return (
-        <div>
-            <h1>Auth page</h1>
-            <div>{result}</div>
-            <input
-                type='text'
-                placeholder='name'
-                value={name}
-                onChange={e => setName(e.target.value)}></input><br />
-            <input
-                type='password'
-                placeholder='password'
-                value={password}
-                onChange={e => setPassword(e.target.value)}></input><br />
+        <div className='auth-container'>
+            <img className='logo' src="https://upload.wikimedia.org/wikipedia/ru/f/f9/Philadelphia_Eagles_primary_logo.png" alt="Logo" />
+            <h1 className='title'>My Messenger</h1>
+            <p>Please enter your name and password</p>
 
-            <button to='/main' onClick={sendUser}>Join chat</button><br /><br />
-            <p>New here? <Link to="/reg">Registration</Link></p>
+            <div>{result}</div>
+            <div className="input-container">
+                <input
+                    className='auth-input'
+                    type='text'
+                    placeholder='name'
+                    value={name}
+                    onChange={e => setName(e.target.value)}></input><br />
+                <input
+                    className='auth-input'
+                    type='password'
+                    placeholder='password'
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}></input>
+            </div>
+
+            <button to='/main' onClick={sendUser}>Start chating</button> <br />
+            <p>Dont have an account yet? <Link to="/reg">Registration</Link></p>
         </div>
     )
 }

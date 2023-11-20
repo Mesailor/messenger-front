@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, redirect, useNavigate } from 'react-router-dom'
+import '../styles/Authpage.css'
 
 export default function Regpage(props) {
     const [name, setName] = useState('')
@@ -34,20 +35,27 @@ export default function Regpage(props) {
     }
 
     return (
-        <div>
-            <h1>Registration page</h1>
-            <input
-                type='text'
-                placeholder='name'
-                value={name}
-                onChange={e => setName(e.target.value)}></input><br />
-            <input
-                type='password'
-                placeholder='password'
-                value={password}
-                onChange={e => setPassword(e.target.value)}></input><br />
+        <div className='auth-container'>
+            <img className='logo' src="https://upload.wikimedia.org/wikipedia/ru/f/f9/Philadelphia_Eagles_primary_logo.png" alt="Logo" />
+            <h1 className='title'>My Messenger</h1>
+            <p>Create your account</p>
+            <div className='input-container'>
+                <input
+                    className='auth-input'
+                    type='text'
+                    placeholder='name'
+                    value={name}
+                    onChange={e => setName(e.target.value)}></input><br />
+                <input
+                    className='auth-input'
+                    type='password'
+                    placeholder='password'
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}></input><br />
 
-            <button onClick={sendUser}>Create user</button><br />
+            <input type="checkbox" /> <span>Keep me signed in</span> <br />
+            </div>
+            <button onClick={sendUser}>Create account</button><br />
             <div>{result}</div>
         </div>
     )
