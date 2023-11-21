@@ -75,7 +75,7 @@ export default function ChatWindow(props) {
             setValue('');
 
             if (!id) {
-                return // КОСТЫЛЬ???
+                return
             }
             await fetch(`http://${props.backend_host}/chats/${id}/newmessage`, {
                 method: "POST",
@@ -104,6 +104,11 @@ export default function ChatWindow(props) {
                 type="text"
                 placeholder="Message"
                 onChange={e => setValue(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                }}
                 value={value} />
             <button className='send-mess-btn' onClick={sendMessage}>Send</button>
         </div>
