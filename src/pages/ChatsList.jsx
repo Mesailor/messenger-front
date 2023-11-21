@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 import Chatitem from "../components/Chatitem"
 import CreateChat from "../components/UI/CreateChat/CreateChat"
 
-export default function ChatsList() {
+export default function ChatsList(props) {
     const [chats, setChats] = useState([]);
     const [isCreatingChat, setIsCreatingChat] = useState(false);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
         async function fecthAllChats() {
-            const chatsResp = await fetch('http://193.233.232.74:5000/chats', {
+            const chatsResp = await fetch(`http://${props.backend_host}/chats`, {
                 headers: { "X-Auth-Token": localStorage.getItem('token') }
             });
             const chats = await chatsResp.json();
@@ -18,7 +18,7 @@ export default function ChatsList() {
         fecthAllChats();
 
         async function fecthAllUsers() {
-            const usersResp = await fetch('http://193.233.232.74:5000/users', {
+            const usersResp = await fetch(`http://${props.backend_host}/users`, {
                 headers: { "X-Auth-Token": localStorage.getItem('token') }
             });
             const users = await usersResp.json();
@@ -39,6 +39,7 @@ export default function ChatsList() {
                         <br /><br />
                         {isCreatingChat ?
                             <CreateChat
+                                backend_host={props.backend_host}
                                 setChats={setChats}
                                 setIsCreatingChat={setIsCreatingChat}
                                 chats={chats}
