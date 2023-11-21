@@ -9,7 +9,7 @@ export default function Authpage() {
 
     async function sendUser() {
         const user = {
-            name,
+            name: name.toLowerCase(),
             password
         }
 
