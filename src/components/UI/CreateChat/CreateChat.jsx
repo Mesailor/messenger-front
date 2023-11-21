@@ -76,10 +76,22 @@ export default function CreateChat(props) {
     }
 
     return (
-        <div className="root">
-            <input type="text" placeholder="chat name" value={chatName} onChange={e => setName(e.target.value)} />
-            <br />
-            <select size={5} multiple>
+        <div className="create-block">
+            <input
+                className='chatname-input'
+                type="text"
+                placeholder="chat name"
+                value={chatName}
+                onChange={e => setName(e.target.value)} />
+            <p>Select members of new chat:</p>
+            <div className='chosen-users'>
+                {usernames.map(user => {
+                    return (
+                        <input className='chosen-user' key={user} type="button" value={user} onClick={e => deleteUser(e.target.value)} />
+                    )
+                })}
+            </div>
+            <select className="users-select" size={5} multiple>
                 {props.users.map(user => {
                     if (usernames.includes(user.name)) {
                         return
@@ -91,14 +103,7 @@ export default function CreateChat(props) {
                     )
                 })}
             </select>
-
-            <div>
-                {usernames.map(user => {
-                    return (
-                        <input key={user} type="button" value={user} onClick={e => deleteUser(e.target.value)} />
-                    )
-                })}
-            </div>
+            <br />
             <button onClick={sendChat} className="new-chat-btn">Create Chat</button>
         </div>
     )

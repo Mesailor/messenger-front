@@ -1,6 +1,7 @@
-import Chat from "../components/Chat"
+import Message from "../components/Message"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import "../styles/ChatWindow.css"
 
 export default function ChatWindow(props) {
     const [value, setValue] = useState('')
@@ -27,7 +28,7 @@ export default function ChatWindow(props) {
                 return
             }
             setChat(chat);
-            setMessages(chat.messages);
+            setMessages(chat.messages.reverse());
         }
         fetchChat();
 
@@ -55,7 +56,7 @@ export default function ChatWindow(props) {
 
         function updateMessages() {
             let copyOfMessages = messages.map(elem => elem);
-            copyOfMessages.push(message);
+            copyOfMessages.unshift(message);
             return copyOfMessages;
         }
         setMessages(updateMessages());
@@ -92,15 +93,19 @@ export default function ChatWindow(props) {
 
     return (
         <div className='chat'>
-            <div className='chat-window'>
-                {!id ? "CHOOSE THE CHAT" : <Chat chat={chat} messages={messages} />}
+            <div className='chat-window' key={chat._id}>
+                {messages.map((mess) => {
+                    return (
+                        <Message mess={mess} />
+                    )
+                })}
             </div>
             <input className="chat-input"
                 type="text"
+                placeholder="Message"
                 onChange={e => setValue(e.target.value)}
                 value={value} />
-            <br />
-            <button className='chat-button' onClick={sendMessage}>Send</button>
+            <button className='send-mess-btn' onClick={sendMessage}>Send</button>
         </div>
     )
 }

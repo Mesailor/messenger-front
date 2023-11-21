@@ -29,25 +29,24 @@ export default function ChatsList(props) {
 
     return (
         <div className='chats-list'>
-                    CHATS LIST
-                    <div>
-                        {chats.map((chat) => {
-                            return (
-                                <Chatitem chat={chat} />
-                            )
-                        })}
-                        <br /><br />
-                        {isCreatingChat ?
-                            <CreateChat
-                                backend_host={props.backend_host}
-                                setChats={setChats}
-                                setIsCreatingChat={setIsCreatingChat}
-                                chats={chats}
-                                users={users} /> :
-                            <button className='new-chat-btn' onClick={() => setIsCreatingChat(true)}>
-                                New Chat
-                            </button>}
-                    </div>
-                </div>
+            <h3 className="list-title">CHATS LIST</h3>
+            <div>
+                {isCreatingChat ?
+                    <CreateChat
+                        backend_host={props.backend_host}
+                        setChats={setChats}
+                        setIsCreatingChat={setIsCreatingChat}
+                        chats={chats}
+                        users={users} /> :
+                    <button className='new-chat-btn' onClick={() => setIsCreatingChat(true)}>
+                        New Chat
+                    </button>}
+                {chats.map((chat) => {
+                    return (
+                        <Chatitem chat={chat} />
+                    )
+                })}
+            </div>
+        </div>
     )
 }
