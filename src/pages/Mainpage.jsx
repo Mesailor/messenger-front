@@ -7,11 +7,15 @@ export default function Mainpage(props) {
     return (
         <>
             <header>
-                {/* <Link to="/chats" >Chat</Link> */}
-                <Link className='link' to="/users" >Users</Link>
-                <Link className='link' to="/" >Chats</Link>
+                <div className="logo-frame">
+                    <img className="mini-logo" src="https://upload.wikimedia.org/wikipedia/ru/f/f9/Philadelphia_Eagles_primary_logo.png" alt="My Messenger" />
+                </div>
+                <nav>
+                    <Link className='nav-link' to="/users" >Contacts</Link>
+                    <Link className='nav-link' to="/" >Chats</Link>
+                </nav>
             </header>
-            <div className='container'>
+            <div className='main-container'>
                 <Outlet />
             </div>
         </>

@@ -17,10 +17,7 @@ export default function App() {
             <Routes>
                 <Route path="/reg" element={<Regpage backend_host={backend_host} />} />
                 <Route path="/auth" element={<Authpage backend_host={backend_host} />} />
-
-
                 <Route path='/' element={<Mainpage />}>
-                    {/* <Route path="/chats" element={<ChatWindow />} /> */}
                     <Route path="/chats/:id" element={<ChatWindow backend_host={backend_host} />} />
                     <Route path="/users" element={<UsersList backend_host={backend_host} />} />
                     <Route index element={<ChatsList backend_host={backend_host} />} />

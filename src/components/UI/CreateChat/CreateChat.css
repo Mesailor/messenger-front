@@ -1,10 +1,26 @@
-select {
-    width: 85%;
-    padding: 0 4% 0 4%;
+
+
+div.create-block {
+    height: 30%;
+    width: 100%;
 }
 
-.checkbox {
-    width: 10%;
-    text-align: left;
-    margin-left: 10%;
+.chatname-input {
+    width: 40%;
+    height: 30px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+div.chosen-users {
+    height: 30px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 15px 0 10px 0;
+}
+
+.users-select {
+    width: 42%;
+    padding-left: 10px;
+    margin-bottom: 20px;
 }

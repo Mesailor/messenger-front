@@ -9,12 +9,23 @@ button {
     max-width: 100%;
     min-width: 70px;
     min-height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: aliceblue;
 }
 
 a {
     text-decoration: none;
+    color: black
 }
 
 a:hover {
-    color: lightseagreen;
+    background-color: aliceblue;
+    color: black;
 }

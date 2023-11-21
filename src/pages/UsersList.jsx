@@ -18,7 +18,7 @@ export default function UsersList(props) {
 
     return (
         <div className='users-list '>
-            USERS LIST
+            <h3 className="list-title">USERS LIST</h3>
             <div>
                 {users.map((user) => {
                     return (
