@@ -13,6 +13,8 @@ export default function ChatWindow(props) {
     const [subscribeActiovator, setSubscribeActiovator] = useState(1); //subAct-or
     const { id } = useParams();
 
+    const [sessionUser, setSessionUser] = useState(atob(localStorage.getItem("token").split('.')[1]))
+
     useEffect(() => {
 
         async function fetchChat() {
@@ -95,8 +97,15 @@ export default function ChatWindow(props) {
         <div className='chat'>
             <div className='chat-window' key={chat._id}>
                 {messages.map((mess) => {
+                    function setMyMessage() {
+                        if (mess.author === JSON.parse(sessionUser).name) {
+                            return {paddingLeft: "30%", paddingRight: "0"}
+                        }
+                    }
                     return (
-                        <Message mess={mess} />
+                        <div className="message-box" style={setMyMessage()}>
+                            <Message mess={mess} />
+                        </div>
                     )
                 })}
             </div>
